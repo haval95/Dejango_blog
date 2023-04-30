@@ -1,26 +1,9 @@
-<!DOCTYPE html>
-
-<html>
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title></title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="">
-</head>
-
-<body>
-    <a href="{% url 'home_view'%}">back</a>
+{% extends 'base.html' %}
+{% block content%}
+<a class="btn btn-light" href="{% url 'home_view'%}"><- </a>
     <h1> {{object.title}} </h1>
     <p> {{object.content}}</p>
     <p> {{object.author}}</p>
 
-    
+{% endblock content%}
 
-
-    <script src="" async defer></script>
-</body>
-
-</html>
