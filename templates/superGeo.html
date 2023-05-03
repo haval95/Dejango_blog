@@ -3,14 +3,36 @@
 
 
 <div class=" d-flex align-items-center justify-content-center vh-100 ">
-    <form action="{% url 'supergeo_view' %}" method="post" class="text-center col-5">
+    <form action="{% url 'supergeo_view' %}" method="post" enctype="multipart/form-data" class="text-center col-5">
         {%csrf_token%}
         <h4 class="text-secondary"> Please Upload your CSV FILE. the values containing addreses should be in a column
             named <span class="fst-italic">Addreess</span>
             or <span class="fst-italic">address</span>.</h4>
-        <input type="file" name="file" class="form-control w-100 " />
+        <input type="file" name="my_file" class="form-control w-100 " />
         <input class="btn btn-info w-100 mt-3 text-light" type="submit" value="Submit">
+        <div>
+            {%if table%}
+            <table class="table table-striped">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Employees</th>
+                </tr>
+        
+                {% for row in table %}
+                <tr>
+                    <td scope="col">{{ row.id }}</td>
+                    <td scope="col">{{ row.address }}</td>
+                    <td scope="col">{{ row.name }}</td>
+                    <td scope="col">{{ row.employees }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+            {%endif%}
+        </div>
     </form>
 
 </div>
+
 {%endblock content %}

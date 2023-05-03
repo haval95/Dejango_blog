@@ -1,11 +1,15 @@
 from django.shortcuts import render
+import pandas as pd
 
 
 def SuperGeo_view(request):
+    print(request.POST)
     if request.method == 'POST':
-        file = request.POST["file"]
-        with open(file, "r") as f:
-            print(f.read())
-        return render(request, "superGeo.html", {"out_put": "success" })
+        # file = request.POST["file"]
+        file = request.FILES['my_file']
+        df = pd.read_csv(file)
+        table = df.to_dict('records')
+        print(df)
+        return render(request, "superGeo.html", {"table": table})
     else:
         return render(request, "superGeo.html")
