@@ -2,7 +2,7 @@
 {%block content%}
 
 
-<div class=" d-flex align-items-center justify-content-center vh-100 ">
+<div class=" d-flex align-items-center justify-content-center  ">
     <form action="{% url 'supergeo_view' %}" method="post" enctype="multipart/form-data" class="text-center col-5">
         {%csrf_token%}
         <h4 class="text-secondary"> Please Upload your CSV FILE. the values containing addreses should be in a column
@@ -18,6 +18,8 @@
                     <th scope="col">Address</th>
                     <th scope="col">Name</th>
                     <th scope="col">Employees</th>
+                    <th scope="col">Longitued</th>
+                    <th scope="col">Latitued</th>
                 </tr>
         
                 {% for row in table %}
@@ -26,9 +28,12 @@
                     <td scope="col">{{ row.address }}</td>
                     <td scope="col">{{ row.name }}</td>
                     <td scope="col">{{ row.employees }}</td>
+                    <td scope="col">{{ row.Longitude }}</td>
+                    <td scope="col">{{ row.Latitude }}</td>
                 </tr>
                 {% endfor %}
             </table>
+            <a href="{% url 'download' %}" download target="_blank">Download CSV</a>
             {%endif%}
         </div>
     </form>
