@@ -24,7 +24,7 @@ def SuperGeo_view(request):
         return render(request, "superGeo.html")
     
     
-def download(request):
+def download():
     global data
     if data is None:
         # if data is not set, return an error response
@@ -32,7 +32,7 @@ def download(request):
     else:
         # create a response object with the CSV file
         response = HttpResponse(content_type='text/csv')
-        response['Content-Disposition'] = 'attachment; filename="my_objects.csv"'
+        response['Content-Disposition'] = 'attachment; filename="data.csv"'
         response['Content-Type'] = 'text/csv'
 
         # write the DataFrame to the response as a CSV file
